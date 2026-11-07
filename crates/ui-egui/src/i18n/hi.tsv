@@ -675,3 +675,6 @@ cameraRaw	Yellow	पीला
 	Pick a different document for each channel.	हर चैनल के लिए अलग डॉक्यूमेंट चुनें।
 	A picked document is no longer open.	चुना गया एक डॉक्यूमेंट अब खुला नहीं है।
 	A picked document is no longer a grayscale document of the same size.	चुना गया एक डॉक्यूमेंट अब उसी आकार का ग्रेस्केल डॉक्यूमेंट नहीं है।
+
+# JPEG Options: the size the file will have (#7843)
+	Estimated file size	अनुमानित फ़ाइल आकार

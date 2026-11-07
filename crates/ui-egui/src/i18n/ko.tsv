@@ -4178,3 +4178,6 @@ document	Orientation	방향
 layers	Fill	칠
 layers	Fill:	칠:
 shape	Appearance	화면 모양
+
+# JPEG Options: the size the file will have (#7843)
+	Estimated file size	예상 파일 크기
