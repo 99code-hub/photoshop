@@ -1,4 +1,4 @@
-name: Delete all branches except main
+name: Delete all branches (except main) and all tags
 
 on:
   workflow_dispatch:
@@ -22,9 +22,19 @@ jobs:
         run: |
           gh api --paginate "repos/$REPO/branches" --jq '.[].name' | while read -r branch; do
             if [ "$branch" = "main" ]; then
-              echo "Keeping: $branch"
+              echo "Keeping branch: $branch"
               continue
             fi
-            echo "Deleting: $branch"
+            echo "Deleting branch: $branch"
             gh api -X DELETE "repos/$REPO/git/refs/heads/$branch" || echo "Failed: $branch"
+          done
+
+      - name: Delete all tags
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          gh api --paginate "repos/$REPO/tags" --jq '.[].name' | while read -r tag; do
+            echo "Deleting tag: $tag"
+            gh api -X DELETE "repos/$REPO/git/refs/tags/$tag" || echo "Failed: $tag"
           done
