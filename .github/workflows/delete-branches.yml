@@ -1,0 +1,35 @@
+name: Delete all branches except main
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (only list branches, do not delete)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete branches
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          gh api --paginate "repos/$REPO/branches" --jq '.[].name' | while read -r branch; do
+            if [ "$branch" = "main" ]; then
+              echo "Keeping: $branch"
+              continue
+            fi
+            if [ "$DRY_RUN" = "true" ]; then
+              echo "[dry run] Would delete: $branch"
+            else
+              echo "Deleting: $branch"
+              gh api -X DELETE "repos/$REPO/git/refs/heads/$branch"
+            fi
+          done
