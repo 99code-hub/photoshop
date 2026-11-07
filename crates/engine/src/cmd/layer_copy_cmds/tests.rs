@@ -663,3 +663,41 @@ fn type_duplicated_to_a_new_document_keeps_the_sources_basic_paragraph() {
     s.execute("type.characterStyle.clearOverride", json!({"layer": id.0})).unwrap();
     assert!(close(text(&s, i, id).runs[0].style.size_pt, 30.0), "{}", text(&s, i, id).runs[0].style.size_pt);
 }
+
+#[test]
+fn copies_selected_pixels_to_destination_document_with_copy_and_cut() {
+    let (mut s, paint) = two_docs(40, 30, 8);
+    // Select half of the 10x10 red square (x: 4..9, y: 6..16)
+    s.execute("select.rect", json!({"x": 4, "y": 6, "width": 5, "height": 10})).unwrap();
+
+    // 1. Copy without cut (cut: false)
+    let r = s.execute("layer.copyToDocument", json!({"document": 1, "selection": true, "cut": false, "offset": [10, 5]})).unwrap();
+    let dest_id = copied(&r);
+    assert_eq!(s.active_index(), Some(1));
+    let d = doc(&s, 1);
+    assert_eq!(d.layers.len(), 2);
+    assert_eq!(bounds(&s, 1, dest_id), Rect::new(14, 11, 19, 21)); // moved by offset (10, 5)
+
+    // Source is intact
+    s.set_active(0);
+    assert_eq!(bounds(&s, 0, paint), Rect::new(4, 6, 14, 16));
+
+    // 2. Cut to destination (cut: true)
+    let r2 = s.execute("layer.copyToDocument", json!({"document": 1, "selection": true, "cut": true, "offset": [20, 0]})).unwrap();
+    let dest_id2 = copied(&r2);
+    assert_eq!(s.active_index(), Some(1));
+    assert_eq!(doc(&s, 1).layers.len(), 3);
+    assert_eq!(bounds(&s, 1, dest_id2), Rect::new(24, 6, 29, 16));
+
+    // Source layer now has the selected half cut out (remaining half: 9..14)
+    assert_eq!(bounds(&s, 0, paint), Rect::new(9, 6, 14, 16));
+
+    // 3. A moved floating selection in the source preserves its floating state and offset when copied
+    s.set_active(0);
+    s.execute("select.rect", json!({"x": 9, "y": 6, "width": 5, "height": 10})).unwrap();
+    s.execute("select.float", json!({"dx": 6, "dy": 4})).unwrap();
+    let r3 = s.execute("layer.copyToDocument", json!({"document": 1, "selection": true, "cut": false, "offset": [2, 3]})).unwrap();
+    let dest_id3 = copied(&r3);
+    assert_eq!(bounds(&s, 1, dest_id3), Rect::new(17, 13, 22, 23));
+    assert_eq!(s.documents()[0].floating.as_ref().map(|f| f.offset), Some((6, 4)));
+}
