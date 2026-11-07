@@ -4657,6 +4657,12 @@ smartSvg	AI/PDF/EPS contents will be edited as SVG. Saving replaces the embedded
 	Stop Color	Colore del punto
 	Shapes can't use patterns yet	Le forme non possono ancora usare pattern
 	Edit Brush…	Modifica pennello…
+	HSL Color	Colore HSL
+	Spot Channels	Canali tinta piatta
+	Alpha Channels	Canali alfa
+	Info Panel Options	Opzioni pannello Info
+	Readouts	Letture
+	Total Spot Ink	Inchiostro tinta piatta totale
 
 # Action Stop message (#8386)
 	Message	Messaggio
@@ -4712,3 +4718,4 @@ smartSvg	AI/PDF/EPS contents will be edited as SVG. Saving replaces the embedded
 	Show layer bounds on hover	Mostra i limiti del livello al passaggio del mouse
 	Expand layer group on click	Espandi il gruppo di livelli al clic
 	Show hover bounds from Layers	Mostra i limiti al passaggio dal pannello Livelli
+	Include in Total Spot Ink	Includi in Inchiostro tinta piatta totale

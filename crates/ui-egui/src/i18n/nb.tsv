@@ -4793,6 +4793,12 @@ cameraRaw	White Balance: As Shot	Hvitbalanse: som fotografert
 	The path was discarded	Banen ble forkastet
 	The path was kept as the Work Path	Banen ble beholdt som arbeidsbane
 	Edit Brush…	Rediger pensel…
+	HSL Color	HSL-farge
+	Spot Channels	Spotkanaler
+	Alpha Channels	Alfakanaler
+	Info Panel Options	Alternativer for infopanel
+	Readouts	Avlesninger
+	Total Spot Ink	Total spotfargemengde
 
 # Action Stop message (#8386)
 	Message	Melding
@@ -4822,3 +4828,4 @@ cameraRaw	White Balance: As Shot	Hvitbalanse: som fotografert
 	Show layer bounds on hover	Vis lagets grenser ved hovring
 	Expand layer group on click	Utvid lagergruppe ved klikk
 	Show hover bounds from Layers	Vis hovringsgrenser fra Lag
+	Include in Total Spot Ink	Ta med i total spotfargemengde

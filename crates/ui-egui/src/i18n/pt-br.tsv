@@ -4472,6 +4472,12 @@ smartSvg	AI/PDF/EPS contents will be edited as SVG. Saving replaces the embedded
 	Stop Color	Cor da parada
 	Shapes can't use patterns yet	Formas ainda não podem usar padrões
 	Edit Brush…	Editar pincel…
+	HSL Color	Cor HSL
+	Spot Channels	Canais de cor especial
+	Alpha Channels	Canais alfa
+	Info Panel Options	Opções do painel Informações
+	Readouts	Leituras
+	Total Spot Ink	Tinta especial total
 
 # Action Stop message (#8386)
 	Message	Mensagem
@@ -4527,3 +4533,4 @@ smartSvg	AI/PDF/EPS contents will be edited as SVG. Saving replaces the embedded
 	Show layer bounds on hover	Mostrar limites da camada ao passar o cursor
 	Expand layer group on click	Expandir grupo de camadas ao clicar
 	Show hover bounds from Layers	Mostrar limites ao passar o cursor em Camadas
+	Include in Total Spot Ink	Incluir em Tinta especial total

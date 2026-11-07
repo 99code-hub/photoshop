@@ -4259,6 +4259,12 @@ smartSvg	AI/PDF/EPS contents will be edited as SVG. Saving replaces the embedded
 	Stop Color	Колір контрольної точки
 	Shapes can't use patterns yet	Фігури поки не можуть використовувати візерунки
 	Edit Brush…	Редагувати пензель…
+	HSL Color	Колір HSL
+	Spot Channels	Канали плашкових кольорів
+	Alpha Channels	Альфа-канали
+	Info Panel Options	Параметри панелі «Інформація»
+	Readouts	Показники
+	Total Spot Ink	Загальна кількість плашкових фарб
 
 # Action Stop message (#8386)
 	Message	Повідомлення
@@ -4324,3 +4330,4 @@ smartSvg	AI/PDF/EPS contents will be edited as SVG. Saving replaces the embedded
 	Show layer bounds on hover	Показувати межі шару під час наведення
 	Expand layer group on click	Розгортати групу шарів за клацанням
 	Show hover bounds from Layers	Показувати межі під час наведення з панелі «Шари»
+	Include in Total Spot Ink	Враховувати в загальній кількості плашкових фарб
